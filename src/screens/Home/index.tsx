@@ -1,0 +1,13 @@
+import React from 'react';
+import { View } from 'react-native';
+import { styles } from './styles';
+
+import { Profile } from '../../components/Profile'
+
+export const Home: React.FC = () => {
+  return (
+    <View style={styles.header}>
+      <Profile />
+    </View>
+  );
+}
