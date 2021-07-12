@@ -1,11 +1,14 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
-
-import { styles } from './styles';
-import { categories  } from '../../utils/categories';
+import { ScrollView, StyleSheet } from 'react-native';
+import { categories } from '../../utils/categories';
 import { Category } from '../Category';
 
-export const CategorySelect: React.FC = () => {
+type Props = {
+  categorySelected: string;
+  setCategory: (categoryId: string) => void;
+}
+
+export const CategorySelect: React.FC<Props> = ({ categorySelected, setCategory }) => {
   return (
     <ScrollView
       horizontal
@@ -16,10 +19,22 @@ export const CategorySelect: React.FC = () => {
       {
         categories.map(category => (
           <Category
-            
+            key={category.id}
+            title={category.title}
+            icon={category.icon}
+            checked={category.id === categorySelected}
+            onPress={() => setCategory(category.id)}
           />
         ))
       }
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingLeft: 24,
+    minHeight: 120,
+    minWidth: 120
+  }
+})

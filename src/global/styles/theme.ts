@@ -27,6 +27,7 @@ export const theme = {
 
   fontSizes: {
     header: 40,
-    simpleText: 15
+    simpleText: 15,
+    eighteen: 18
   }
 };

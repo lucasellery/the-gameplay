@@ -12,7 +12,7 @@ type Props = {
 
 export const Avatar: React.FC<Props> = ({ urlImage }) => {
   const { secondary50, secondary70 }  = theme.colors;
-
+ 
   return (
     <LinearGradient
       style={styles.container}
