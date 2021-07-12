@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 import { Profile } from "../../components/Profile";
 import { ListHeader } from "../../components/ListHeader";
@@ -8,6 +8,7 @@ import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
 import { Appointment } from "../../components/Appointment";
 import { ListDivider } from "../../components/ListDivider";
+import { Background } from "../../components/Background";
 
 export const Home: React.FC = () => {
   const [category, setCategory] = useState("");
@@ -46,32 +47,32 @@ export const Home: React.FC = () => {
   }
 
   return (
-    <View>
-      <View style={styles.header}>
-        <Profile />
-        <ButtonAdd />
-      </View>
-
-      <CategorySelect
-        categorySelected={category}
-        setCategory={handleCategorySelect}
-      />
-
-      <View style={styles.content}>
-        <ListHeader title="Partidas Agendadas" subtitle="Total 6" />
-
-        <FlatList
-          data={appointments}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Appointment data={item} />
-          )}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <ListDivider />}
-        />
+    <Background>
+      <View>
+        <View style={styles.header}>
+          <Profile />
+          <ButtonAdd />
         </View>
-    </View>
+
+        <CategorySelect
+          categorySelected={category}
+          setCategory={handleCategorySelect}
+        />
+
+        <View style={styles.content}>
+          <ListHeader title="Partidas Agendadas" subtitle="Total 6" />
+
+          <FlatList
+            data={appointments}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <Appointment data={item} />}
+            style={styles.matches}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <ListDivider />}
+          />
+        </View>
+      </View>
+    </Background>
   );
 };
 
@@ -80,12 +81,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    width: '100%',
+    width: "100%",
     paddingHorizontal: 24,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: getStatusBarHeight() + 26,
-    marginBottom: 42
+    marginBottom: 42,
   },
   content: {
     marginTop: 42,
@@ -93,5 +94,5 @@ const styles = StyleSheet.create({
   matches: {
     marginTop: 24,
     marginLeft: 24,
-  }
+  },
 });
