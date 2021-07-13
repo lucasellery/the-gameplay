@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { View, FlatList, StyleSheet } from "react-native";
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
@@ -12,6 +13,8 @@ import { Background } from "../../components/Background";
 
 export const Home: React.FC = () => {
   const [category, setCategory] = useState("");
+
+  const navigation = useNavigation();
 
   const appointments = [
     {
@@ -46,6 +49,10 @@ export const Home: React.FC = () => {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
 
+  function handleAppointmentDetails() {
+    navigation.navigate('AppointmentDetails');
+  }
+
   return (
     <Background>
       <View>
@@ -65,7 +72,12 @@ export const Home: React.FC = () => {
           <FlatList
             data={appointments}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Appointment data={item} />}
+            renderItem={({ item }) => (
+              <Appointment
+                data={item}
+                onPress={handleAppointmentDetails}
+              />
+            )}
             style={styles.matches}
             showsVerticalScrollIndicator={false}
             ItemSeparatorComponent={() => <ListDivider />}
