@@ -4,7 +4,7 @@ import { Text, View, Image, StatusBar } from "react-native";
 
 import { styles } from "./styles";
 import IllustrationImg from "../../assets/illustration.png";
-import ButtonIcon from "../../components/ButtonIcon";
+import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 
 export function Signin() {

@@ -10,7 +10,7 @@ import { Fontisto } from "@expo/vector-icons";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-import ButtonIcon  from "../../components/ButtonIcon";
+import { ButtonIcon }  from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
 import { Header } from "../../components/Header";
 import { ListHeader } from "../../components/ListHeader";
