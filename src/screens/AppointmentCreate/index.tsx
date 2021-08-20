@@ -8,7 +8,7 @@ import {
   View,
   ScrollView,
   KeyboardAvoidingView,
-  Platform,
+  Platform
 } from "react-native";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 
@@ -19,6 +19,8 @@ import { GuildIcon } from "../../components/GuildIcon";
 import { SmallInput } from "../../components/SmallInput";
 import { Textarea } from "../../components/Textarea";
 import { Button } from "../../components/Button";
+import { ModalView } from '../../components/ModalView';
+import { Guilds } from '../Guilds';
 
 import { theme } from "../../global/styles/theme";
 
@@ -115,6 +117,10 @@ export const AppointmentCreate: React.FC = () => {
             </View>
           </View>
         </ScrollView>
+
+        <ModalView visible={true}>
+          <Guilds />
+        </ModalView>
       </KeyboardAvoidingView>
     </Background>
   );

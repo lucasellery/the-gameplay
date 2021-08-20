@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from "react-native";;
+import { Guild } from '../../components/Guild';
+import { ListDivider } from '../../components/ListDivider';
 
 export function Guilds() {
   const guilds = [
@@ -17,8 +19,10 @@ export function Guilds() {
         data={guilds}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          
+          <Guild data={item} />
         )}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <ListDivider />}
       />
     </View>
   )
@@ -26,6 +30,11 @@ export function Guilds() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 24
+  },
+  guilds: {
+    width: '100%',
   }
 })
